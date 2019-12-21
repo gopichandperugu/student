@@ -2,7 +2,8 @@ pipeline {
    agent slave2
 	node {
     		stage('git-clone'){
-        		git branch: 'pushyami', credentialsId: 'github', url: 'https://github.com/devops090/Studentapp.git'
+			git branch: 'pushyami', changelog: false, credentialsId: 'github', poll: false, url: 'https://github.com/devops090/Studentapp.git'
+        		//**git branch: 'pushyami', credentialsId: 'github', url: 'https://github.com/devops090/Studentapp.git'*//
 		}
     		stage('mvn-clean'){
         		sh label: '', script: 'mvn clean'        
