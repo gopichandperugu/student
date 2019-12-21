@@ -1,4 +1,4 @@
-node('slave2') {
+node slave2 {
     stage('git-clone'){
         git branch: 'pushyami', credentialsId: 'github', url: 'https://github.com/devops090/Studentapp.git'
 	}
