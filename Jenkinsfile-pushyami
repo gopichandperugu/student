@@ -1,10 +1,8 @@
-pipeline {
-    agent {label 'slave2'}
-    stages {
+node('slave2'){
     	stage('git-clone'){
 			git branch: 'pushyami', changelog: false, credentialsId: 'github', poll: false, url: 'https://github.com/devops090/Studentapp.git'
         		//**git branch: 'pushyami', credentialsId: 'github', url: 'https://github.com/devops090/Studentapp.git'*//
-		}
+	}
     	stage('mvn-clean'){
         		sh label: '', script: 'mvn clean'        
     	}
@@ -17,6 +15,4 @@ pipeline {
     	stage('mvn-sonar'){
         		sh label: '', script: 'mvn sonar:sonar -Dsonar.projectKey=Studentapp -Dsonar.host.url=http://10.128.0.2:9000 -Dsonar.login=8391751b8c8e029b147df5066cfb32546a588978'
     	}
-     }
-   }
  }
