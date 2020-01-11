@@ -34,7 +34,7 @@
         <snapshotRepository>
             <id>deployment</id>
             <name>Internal Snapshot Releases</name>
-            <url>/http://10.128.0.5:8081/repository/Studentapp-snapshot/</url>
+            <url>http://10.128.0.5:8081/repository/Studentapp-snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
   <dependencies>
