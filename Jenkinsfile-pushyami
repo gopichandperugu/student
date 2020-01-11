@@ -10,7 +10,7 @@ node {
         		sh label: '', script: 'mvn compile'        
     	}
 	stage('mvn-sonar'){
-        	       sh label: '', script: 'mvn sonar:sonar -Dsonar.projectKey=student -Dsonar.host.url=http://10.128.0.2:9000 -Dsonar.login=8391751b8c8e029b147df5066cfb32546a588978'
+        	       sh label: '', script: 'mvn sonar:sonar -Dsonar.projectKey=student -Dsonar.host.url=http://10.128.0.2:9000 -Dsonar.login=a21c86f50afc8a1e82262c1ae812ec81ca43cfc1'
     	}
     	stage('mvn-package'){
         		sh label: '', script: 'mvn package'
