@@ -1,4 +1,4 @@
-node('slave2'){
+node('$slave-name'){
     	stage('git-clone'){
 			git branch: 'pushyami', changelog: false, credentialsId: 'github', poll: false, url: 'https://github.com/devops090/Studentapp.git'
         		//**git branch: 'pushyami', credentialsId: 'github', url: 'https://github.com/devops090/Studentapp.git'*//
@@ -9,10 +9,13 @@ node('slave2'){
     	stage('mvn-compile'){
         		sh label: '', script: 'mvn compile'        
     	}
+	stage('mvn-sonar'){
+        		sh label: '', script: 'mvn sonar:sonar -Dsonar.projectKey=student -Dsonar.host.url=http://10.128.0.2:9000 -Dsonar.login=c7b9803b4281d1bd2fd7964f0c1447a8b847e4c5'
+    	}
     	stage('mvn-package'){
         		sh label: '', script: 'mvn package'
     	}
-    	stage('mvn-sonar'){
-        		sh label: '', script: 'mvn sonar:sonar -Dsonar.projectKey=student -Dsonar.host.url=http://10.128.0.2:9000 -Dsonar.login=c7b9803b4281d1bd2fd7964f0c1447a8b847e4c5'
+	stage('mvn-Deploy'){
+        		sh label: '', script: 'mvn deploy'
     	}
  }
