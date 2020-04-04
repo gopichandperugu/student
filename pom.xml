@@ -23,10 +23,6 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
-      <plugin>
-        <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.7.0.1746</version>
-      </plugin
     </plugins>
   </build>
    <distributionManagement>
