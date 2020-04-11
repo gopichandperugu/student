@@ -1,0 +1,17 @@
+node(){
+    stage('Clone Repo') {
+		    git branch: 'kubernates', credentialsId: 'Github', url: 'https://github.com/devops090/Studentapp.git'
+    }
+    stage('compile code') {
+        sh label: '', script: 'mvn compile'
+    }
+    stage('mvn-sonar'){
+        sh label: '', script: 'mvn sonar:sonar -Dsonar.projectKey=student -Dsonar.host.url=http://35.184.162.207:30728 -Dsonar.login=24968dec6fccb036229075772dba8ec1b2e673c4'
+    }
+    stage('package') {
+        sh label: '', script: 'mvn package'
+    }
+    stage('mvn-Deploy'){
+        		sh label: '', script: 'mvn deploy'
+    }
+}
