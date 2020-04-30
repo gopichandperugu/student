@@ -1,7 +1,5 @@
+#satish736/studentapp-frontend
 FROM nginx
 Maintainer Satish Nakirikanti
-ADD https://raw.githubusercontent.com/devops090/Studentapp/kubernates/WebContent/index.jsp /var/www/html/index.jsp
-CMD ["nginx"]
-#Expose ports.
+ADD https://raw.githubusercontent.com/devops090/Studentapp/kubernates/WebContent/index.jsp /usr/share/nginx/html/index.jsp
 EXPOSE 80
-EXPOSE 443
