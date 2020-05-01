@@ -1,6 +1,4 @@
 #satish736/studentapp-frontend
 FROM nginx
 Maintainer Satish Nakirikanti
-RUN rm -rf /usr/share/nginx/html/*.html
-ADD https://raw.githubusercontent.com/devops090/Studentapp/kubernates/WebContent/index.jsp /usr/share/nginx/html/index.jsp
-ADD https://raw.githubusercontent.com/devops090/Studentapp/kubernates/default.conf /etc/nginx/conf.d/default.conf
+ADD https://raw.githubusercontent.com/devops090/Studentapp/kubernates/site.conf /etc/nginx/conf.d/default.conf
