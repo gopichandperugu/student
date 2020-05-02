@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studentapp-tomcat
+spec:
+  selector:
+    matchLabels:
+      app: studentapp-tomcat
+      tier: backend
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: studentapp-tomcat
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: studentapp-tomcat
+          image: satish736/studentapp-backend:1.0
+          ports:
+            - name: http
+              containerPort: 8080
