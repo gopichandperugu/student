@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:
+    sbdemo-apserver
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: sbdemo-apserver
+  template:
+    metadata:
+      labels:
+        app: sbdemo-appserver
+    spec:
+      containers:
+      - name: apserver
+        image: satish736/studentapp-backend:1.0
+        ports:
+        - containerPort: 8080
