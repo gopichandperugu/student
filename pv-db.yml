@@ -1,0 +1,15 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: studentapp-initdb-pv-volume
+  labels:
+    type: local
+    app: studentapp
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadOnlyMany
+  hostPath:
+    path: "/home/pushyami/mariadb-storage/scripts/"
