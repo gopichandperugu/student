@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studentapp-tomcat
+spec:
+  selector:
+    matchLabels:
+      app: studentapp-tomcat
+      tier: backend
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: studentapp-tomcat
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: studentapp-tomcat
+          image: satish736/studentapp-backend:7.0
+          env:
+          - name: MYSQL_SERVICE_HOST
+            value: "studentapp-mariadb"
+          - name: MYSQL_SERVICE_PORT
+            value: "3306"
+            #- name: DB_PORT_3306_TCP_ADDR
+            #value: studentapp-mariadb                  #service name of mysql
+          - name: MYSQL_DATABASE
+            value: studentapp
+          - name: MYSQL_USER
+            value: student
+          - name: MYSQL_PASSWORD
+            value: student
+          ports:
+            - name: http
+              containerPort: 8080
