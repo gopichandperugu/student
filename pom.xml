@@ -7,6 +7,11 @@
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
+     <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.9.1.2184</version>
+      </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.3</version>
@@ -14,11 +19,6 @@
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
-      </plugin>
-      <plugin>
-           <groupId>org.codehaus.mojo</groupId>
-           <artifactId>sonar-maven-plugin</artifactId>
-           <version>3.9.1.2184</version>
       </plugin>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
