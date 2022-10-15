@@ -40,7 +40,7 @@
   <properties>
     <sonar.organization>gopichandperugu</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.java.sources>src/com/srk/dao,src/vo</sonar.java.sources>
+    <sonar.java.binaries>src/com/srk/dao,src/vo</sonar.java.binaries>
   </properties>
   <dependencies>
   	<dependency>
