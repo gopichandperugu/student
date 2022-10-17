@@ -27,14 +27,14 @@
   </build>
    <distributionManagement>
         <repository>
-            <id>deployment</id>
+            <id>deploymentRepo</id>
             <name>Internal Releases</name>
-            <url>http://10.128.0.10:8081/repository/student-rel/</url>
+            <url>http://43.206.116.75:8081/repository/student/</url>
         </repository>
         <snapshotRepository>
-            <id>deployment</id>
+            <id>deploymentRepo</id>
             <name>Internal Snapshot Releases</name>
-            <url>http://35.200.141.44:8081/repository/student_snapshot//</url>
+            <url>http://43.206.116.75:8081/repository/student//</url>
         </snapshotRepository>
     </distributionManagement>
   <dependencies>
