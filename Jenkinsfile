@@ -14,7 +14,9 @@ pipeline {
 	}  
         stage('mvn-clean') {
             steps {
-		sh 'mvn clean'
+                sh 'export SONAR_TOKEN=a54ec7736f1660e1b6a39f20a4530953913389e3'
+                sh 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.16.0.8-1.amzn2.0.1.x86_64'
+				sh 'mvn clean'
             }    
 	}  
         stage('compile') {
@@ -32,10 +34,16 @@ pipeline {
                  sh 'mvn package'
             }    
 	}  
+        stage('SAST-Shiftleft') {
+            steps {
+                 sh 'export SHIFTLEFT_ACCESS_TOKEN=eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjYwMzM2NDYsImlzcyI6IlNoaWZ0TGVmdCIsIm9yZ0lEIjoiY2FmMjc0MmMtMTZlZi00YTQzLWFlNDItYzM1OGRhZjE5ODNiIiwidXNlcklEIjoiZDFkMGZlZDctOGNjNy00ZTRkLTg5MjMtMzRlMmRmMWRkYWJlIiwic2NvcGVzIjpbInNlYXRzOndyaXRlIiwiZXh0ZW5kZWQiLCJhcGk6djIiLCJ1cGxvYWRzOndyaXRlIiwibG9nOndyaXRlIiwicGlwZWxpbmVzdGF0dXM6cmVhZCIsIm1ldHJpY3M6d3JpdGUiLCJwb2xpY2llczpjdXN0b21lciJdfQ.SfKdw2kimnP52_-VzJCrV_rXKRUctlpigbfCWv5vssMquRmi3PjNLfvIKF40Xn17KleyW4JGdtpz-8TJMmHKrzRVNLdyOIA-UvV7T9jCK3e9m9fNAAzjwSWbRxBEpkhF11Q7-Xm2xH3RPAFSdKZggwFD_P9BtvzTTSanYVQbu2uE4HVJtOoP7XJ_eF_Xkd3zk3pXmXe7SeaB5xYrcrxsid784pirbKx4w2oryB5WnpARZF3l4JD8gphcsAcL_FFz0FyxnqA0s-iv9tBUwoY5oNHvT_H2ailMMWokbRDA-d_zPrLxiCbphM4SjavOD0nkxhfSIJMdzFgCWvPiI5BcQg'
+                 sh 'sl auth --org "caf2742c-16ef-4a43-ae42-c358daf1983b" --token "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjYwMzM2NDYsImlzcyI6IlNoaWZ0TGVmdCIsIm9yZ0lEIjoiY2FmMjc0MmMtMTZlZi00YTQzLWFlNDItYzM1OGRhZjE5ODNiIiwidXNlcklEIjoiZDFkMGZlZDctOGNjNy00ZTRkLTg5MjMtMzRlMmRmMWRkYWJlIiwic2NvcGVzIjpbInNlYXRzOndyaXRlIiwiZXh0ZW5kZWQiLCJhcGk6djIiLCJ1cGxvYWRzOndyaXRlIiwibG9nOndyaXRlIiwicGlwZWxpbmVzdGF0dXM6cmVhZCIsIm1ldHJpY3M6d3JpdGUiLCJwb2xpY2llczpjdXN0b21lciJdfQ.SfKdw2kimnP52_-VzJCrV_rXKRUctlpigbfCWv5vssMquRmi3PjNLfvIKF40Xn17KleyW4JGdtpz-8TJMmHKrzRVNLdyOIA-UvV7T9jCK3e9m9fNAAzjwSWbRxBEpkhF11Q7-Xm2xH3RPAFSdKZggwFD_P9BtvzTTSanYVQbu2uE4HVJtOoP7XJ_eF_Xkd3zk3pXmXe7SeaB5xYrcrxsid784pirbKx4w2oryB5WnpARZF3l4JD8gphcsAcL_FFz0FyxnqA0s-iv9tBUwoY5oNHvT_H2ailMMWokbRDA-d_zPrLxiCbphM4SjavOD0nkxhfSIJMdzFgCWvPiI5BcQg" --diagnostic'
+                 sh '/usr/local/bin/sl analyze --app Student --java target/*.war'
+            }    
+	}  
         stage('Artifact-Backup') {
             steps {
-                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh 'mvn deploy'
             }    
 	}  		
     }
