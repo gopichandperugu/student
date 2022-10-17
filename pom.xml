@@ -16,11 +16,6 @@
         </configuration>
       </plugin>
       <plugin>
-         <groupId>org.sonarsource.scanner.maven</groupId>
-         <artifactId>sonar-maven-plugin</artifactId>
-         <version>3.7.0.1746</version>
-       </plugin>
-      <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
@@ -42,11 +37,6 @@
             <url>http://35.200.141.44:8081/repository/student_snapshot//</url>
         </snapshotRepository>
     </distributionManagement>
-  <properties>
-    <sonar.organization>gopichandperugu</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.java.libraries>target</sonar.java.libraries>
-  </properties>
   <dependencies>
   	<dependency>
   		<groupId>javax.servlet</groupId>
