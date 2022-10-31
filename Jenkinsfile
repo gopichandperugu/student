@@ -15,7 +15,7 @@ pipeline {
         stage('mvn-clean') {
             steps {
                 sh 'export SONAR_TOKEN=a54ec7736f1660e1b6a39f20a4530953913389e3'
-                //sh 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.16.0.8-1.amzn2.0.1.x86_64'
+                sh 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.17.0.8-2.el8_6.x86_64'
 		sh 'mvn clean'
             }    
 	}  
