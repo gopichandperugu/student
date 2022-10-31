@@ -4,7 +4,7 @@ pipeline {
         stage('secrets-scan') {
             steps {
                 sh 'docker ps -aq'
-				sh 'docker run gesellix/trufflehog --json https://github.com/gopichandperugu/Studentapp.git'
+		  sh 'docker run gesellix/trufflehog --json https://github.com/gopichandperugu/Studentapp.git'
             }    
 	}   
         stage('clone') {
@@ -24,10 +24,10 @@ pipeline {
               sh 'mvn compile' 
             }    
 	} 
-        stage('sonar(unit-test(code-coverage,code-security))') {
+       /* stage('sonar(unit-test(code-coverage,code-security))') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.java.source=11 -Dsonar.projectKey=student -Dsonar.host.url=http://13.231.120.140:9000 -Dsonar.login=f3846fe925d361b5e79283cc85875c821f305dd5'
-            } 
+            } */
 	}
         stage('mvn-package') {
             steps {
