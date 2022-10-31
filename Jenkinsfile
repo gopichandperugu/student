@@ -27,8 +27,8 @@ pipeline {
        /* stage('sonar(unit-test(code-coverage,code-security))') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.java.source=11 -Dsonar.projectKey=student -Dsonar.host.url=http://13.231.120.140:9000 -Dsonar.login=f3846fe925d361b5e79283cc85875c821f305dd5'
-            } */
-	}
+            } 
+	}*/
         stage('mvn-package') {
             steps {
                  sh 'mvn package'
