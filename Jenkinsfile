@@ -1,15 +1,15 @@
 pipeline {
     agent any
     stages { 
-	    stage('secrets-scan') {
+	    stage('clone') {
+            steps {
+                git credentialsId: '698b071f-f3db-482d-9f24-2f3f13e94558', url: 'https://github.com/gopichandperugu/student.git'
+            }    
+	}
+	stage('secrets-scan') {
             steps {
                 sh 'docker ps -aq'
 		  sh 'docker run gesellix/trufflehog --json https://github.com/gopichandperugu/Studentapp.git'
-            }    
-	}
-        stage('clone') {
-            steps {
-                git credentialsId: '698b071f-f3db-482d-9f24-2f3f13e94558', url: 'https://github.com/gopichandperugu/student.git'
             }    
 	}
         stage('mvn-clean') {
