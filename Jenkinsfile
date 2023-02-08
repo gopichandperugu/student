@@ -32,11 +32,9 @@ pipeline {
                  sh 'mvn package'
             }    
 	}  
-        stage('SAST-Shiftleft') {
+        stage('SAST-Snyk') {
             steps {
-                 sh 'export SHIFTLEFT_ACCESS_TOKEN=eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjYwMzM2NDYsImlzcyI6IlNoaWZ0TGVmdCIsIm9yZ0lEIjoiY2FmMjc0MmMtMTZlZi00YTQzLWFlNDItYzM1OGRhZjE5ODNiIiwidXNlcklEIjoiZDFkMGZlZDctOGNjNy00ZTRkLTg5MjMtMzRlMmRmMWRkYWJlIiwic2NvcGVzIjpbInNlYXRzOndyaXRlIiwiZXh0ZW5kZWQiLCJhcGk6djIiLCJ1cGxvYWRzOndyaXRlIiwibG9nOndyaXRlIiwicGlwZWxpbmVzdGF0dXM6cmVhZCIsIm1ldHJpY3M6d3JpdGUiLCJwb2xpY2llczpjdXN0b21lciJdfQ.SfKdw2kimnP52_-VzJCrV_rXKRUctlpigbfCWv5vssMquRmi3PjNLfvIKF40Xn17KleyW4JGdtpz-8TJMmHKrzRVNLdyOIA-UvV7T9jCK3e9m9fNAAzjwSWbRxBEpkhF11Q7-Xm2xH3RPAFSdKZggwFD_P9BtvzTTSanYVQbu2uE4HVJtOoP7XJ_eF_Xkd3zk3pXmXe7SeaB5xYrcrxsid784pirbKx4w2oryB5WnpARZF3l4JD8gphcsAcL_FFz0FyxnqA0s-iv9tBUwoY5oNHvT_H2ailMMWokbRDA-d_zPrLxiCbphM4SjavOD0nkxhfSIJMdzFgCWvPiI5BcQg'
-                 sh 'sl auth --org "caf2742c-16ef-4a43-ae42-c358daf1983b" --token "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjYwMzM2NDYsImlzcyI6IlNoaWZ0TGVmdCIsIm9yZ0lEIjoiY2FmMjc0MmMtMTZlZi00YTQzLWFlNDItYzM1OGRhZjE5ODNiIiwidXNlcklEIjoiZDFkMGZlZDctOGNjNy00ZTRkLTg5MjMtMzRlMmRmMWRkYWJlIiwic2NvcGVzIjpbInNlYXRzOndyaXRlIiwiZXh0ZW5kZWQiLCJhcGk6djIiLCJ1cGxvYWRzOndyaXRlIiwibG9nOndyaXRlIiwicGlwZWxpbmVzdGF0dXM6cmVhZCIsIm1ldHJpY3M6d3JpdGUiLCJwb2xpY2llczpjdXN0b21lciJdfQ.SfKdw2kimnP52_-VzJCrV_rXKRUctlpigbfCWv5vssMquRmi3PjNLfvIKF40Xn17KleyW4JGdtpz-8TJMmHKrzRVNLdyOIA-UvV7T9jCK3e9m9fNAAzjwSWbRxBEpkhF11Q7-Xm2xH3RPAFSdKZggwFD_P9BtvzTTSanYVQbu2uE4HVJtOoP7XJ_eF_Xkd3zk3pXmXe7SeaB5xYrcrxsid784pirbKx4w2oryB5WnpARZF3l4JD8gphcsAcL_FFz0FyxnqA0s-iv9tBUwoY5oNHvT_H2ailMMWokbRDA-d_zPrLxiCbphM4SjavOD0nkxhfSIJMdzFgCWvPiI5BcQg" --diagnostic'
-                 sh '/usr/local/bin/sl analyze --app Student --java target/*.war'
+                 sh 'snykSecurity snykInstallation: 'Please define a Snyk installation in the Jenkins Global Tool Configuration. This task will not run without a Snyk installation.', snykTokenId: 'Snyk-jenkins''
             }    
 	}  
         stage('Artifact-Backup') {
