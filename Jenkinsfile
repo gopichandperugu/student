@@ -34,7 +34,7 @@ pipeline {
 	}  
         stage('SAST-Snyk') {
             steps {
-                 sh 'snykSecurity snykInstallation: 'Please define a Snyk installation in the Jenkins Global Tool Configuration. This task will not run without a Snyk installation.', snykTokenId: 'Snyk-jenkins''
+                 snykSecurity (snykInstallation: 'Please define a Snyk installation in the Jenkins Global Tool Configuration. This task will not run without a Snyk installation.', snykTokenId: 'Snyk-jenkins')
             }    
 	}  
         stage('Artifact-Backup') {
