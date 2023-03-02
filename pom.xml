@@ -27,14 +27,14 @@
   </build>
    <distributionManagement>
         <repository>
-            <id>Demo</id>
+            <id>deploymentRepo</id>
             <name>Internal Releases</name>
-            <url>http://20.245.110.131:8081/repository/Demo/</url>
+            <url>http://20.245.110.131:8081/repository/project/</url>
         </repository>
         <snapshotRepository>
-            <id>Demo</id>
+            <id>deploymentRepo</id>
             <name>Internal Snapshot Releases</name>
-            <url>http://20.245.110.131:8081/repository/Demo/</url>
+            <url>http://20.245.110.131:8081/repository/project/</url>
         </snapshotRepository>
     </distributionManagement>
   <dependencies>
