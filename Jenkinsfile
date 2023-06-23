@@ -42,10 +42,5 @@ pipeline {
                 sh 'mvn deploy'
             }    
 	}
-	stage('Tomcat-Deployment') {
-            steps {
-                sh 'deploy adapters: [tomcat8(credentialsId: '5bb48bde-ea2e-4ba6-9305-889c968c247f', path: '', url: 'http://20.245.110.131:8080/')], contextPath: 'Tomcat', war: '**/*.war''
-            }
-	}
     }
 }
