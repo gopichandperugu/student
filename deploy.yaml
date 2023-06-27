@@ -1,0 +1,56 @@
+- name : deploying the student project
+  hosts : PROD
+  become : yes
+  vars :
+    - USERNAME : student
+    - TOMCAT_PATH : /home/student
+    - TOMCAT_DIR : "{{TOMCAT_PATH}}/tomcat9"
+    - STUNDENTWAR : https://github.com/devops090/Studentapp/blob/master/target/studentapp-2.7-SNAPSHOT.war
+  tasks :
+
+    - name : print the TOMCAT_DIR
+      debug :
+        msg : "{{TOMCAT_DIR}}/webapps"
+
+    - name : run the ls -l command
+      shell : ls -l
+      args :
+        chdir : "{{TOMCAT_DIR}}/webapps"
+      become_user : "{{USERNAME}}"
+
+    - name : find the files and folders from webapps
+      find :
+        paths : "{{TOMCAT_DIR}}/webapps/*.war"
+        file_type : any
+      register : out
+      become_user : "{{USERNAME}}"
+
+    - name : print the files
+      debug : 
+        msg : "{{out}}"
+
+    - name : remove old artifacts
+      file :
+        path : "{{item.path}}"
+        state : absent
+      with_items : "{{out.files}}"
+      become_user : "{{USERNAME}}"
+
+    - name : download the latest student war file
+      get_url :
+        url : "{{STUNDENTWAR}}"
+        dest : "{{TOMCAT_DIR}}/webapps/"
+      become_user : "{{USERNAME}}"
+
+    - name : check tomcat is running or not
+      shell : ps -ef | grep tomcat | grep -v grep
+      register : out
+      ignore_errors : True
+
+    - name : start the tomcat
+      shell : "nohup sh {{TOMCAT_DIR}}/bin/startup.sh"
+      when : out.rc != 0
+
+    - name : restart the tomcat
+      shell : "nohup sh {{TOMCAT_DIR}}/bin/shutdown.sh && nohup sh {{TOMCAT_DIR}}/bin/startup.sh"
+      when : out.rc == 0
