@@ -3,7 +3,7 @@
   become : yes
   vars :
     - USERNAME : student
-    - TOMCAT_PATH : /home/student
+    - TOMCAT_PATH : /opt
     - TOMCAT_DIR : "{{TOMCAT_PATH}}/tomcat9"
     - STUNDENTWAR : https://github.com/devops090/Studentapp/blob/master/target/studentapp-2.7-SNAPSHOT.war
   tasks :
