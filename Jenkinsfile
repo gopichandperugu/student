@@ -34,7 +34,7 @@ pipeline {
 	}
 	stage('SAST-SemGrep') {
             steps {
-                 semgrep ci
+                 sh 'semgrep ci'
             }    
 	} 
         /*stage('SAST-Snyk') {
