@@ -31,21 +31,26 @@ pipeline {
             steps {
                  sh 'mvn package'
             }    
-	}  
-        stage('SAST-Snyk') {
+	}
+	stage('SAST-SemGrep') {
+            steps {
+                 semgrep ci
+            }    
+	} 
+        /*stage('SAST-Snyk') {
             steps {
                  snykSecurity (snykInstallation: 'Snyk@latest', snykTokenId: 'Snyk-jenkins')
             }    
-	}  
+	}*/  
         stage('Artifact-Backup') {
             steps {
                 sh 'mvn deploy'
             }    
 	}
-        stage('Tomcat-Deployment') {
+        /*stage('Tomcat-Deployment') {
             steps {
-                 deploy adapters: [tomcat8(credentialsId: '5bb48bde-ea2e-4ba6-9305-889c968c247f', path: '', url: 'http://20.245.110.131:8080/')], contextPath: 'Tomcat', war: '**/*.war' 
+                 deploy adapters: [tomcat8(credentialsId: '5bb48bde-ea2e-4ba6-9305-889c968c247f', path: '', url: 'http://20.245.110.131:8080/')], contextPath: 'Tomcat', war: '***.war' 
 	    }
-	}  
+	}*/  
     }
 }
