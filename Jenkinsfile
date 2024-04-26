@@ -32,16 +32,16 @@ pipeline {
                  sh 'mvn package'
             }    
 	}
-	stage('SAST-SemGrep') {
+	/*stage('SAST-SemGrep') {
             steps {
                  sh 'semgrep ci'
             }    
-	} 
-        /*stage('SAST-Snyk') {
+	} */
+        stage('SAST-Snyk') {
             steps {
                  snykSecurity (snykInstallation: 'Snyk@latest', snykTokenId: 'Snyk-jenkins')
             }    
-	}*/  
+	}  
         stage('Artifact-Backup') {
             steps {
                 sh 'mvn deploy'
