@@ -26,6 +26,6 @@
     "load-grunt-tasks": "^3.1.0"
   },
   "dependencies": {
-    "node-sass": "^3.8.0"
+    "node-sass": "^7.0.0"
   }
 }
